@@ -1,0 +1,22 @@
+<wsdl:definitions name="UpdateMyProjectBatch-concrete"
+                  targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/KPMGBIMApplication/MyProject_Export/UpdateMyProjectBatch"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+                  
+  <wsdl:import location="UpdateMyProjectBatch.wsdl"
+               namespace="http://xmlns.oracle.com/pcbpel/adapter/db/KPMGBIMApplication/MyProject_Export/UpdateMyProjectBatch"/>
+               
+  <wsdl:binding name="UpdateMyProjectBatch_ptt-binding" type="upd:UpdateMyProjectBatch_ptt"
+                xmlns:upd="http://xmlns.oracle.com/pcbpel/adapter/db/KPMGBIMApplication/MyProject_Export/UpdateMyProjectBatch">
+                
+    <soap:binding style="document" transport="http://www.bea.com/wli/sb/transports/jca"/>
+    
+    <wsdl:operation name="update">
+      <soap:operation soapAction="update"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    
+  </wsdl:binding>
+</wsdl:definitions>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ser:proxyServiceEntry xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:con="http://www.bea.com/wli/sb/services/security/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:oper="http://xmlns.oracle.com/servicebus/proxy/operations" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env">
+    <ser:coreEntry>
+        <ser:security>
+            <con:inboundWss processWssHeader="true"/>
+        </ser:security>
+        <ser:binding type="SOAP" xsi:type="con:SoapBindingType" isSoap12="false" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+            <con:wsdl ref="MyProject_Export/Resources/wsdl/MyProjectBatchPooler-concrete"/>
+            <con:binding>
+                <con:name>MyProjectBatchPooler_ptt-binding</con:name>
+                <con:namespace>http://xmlns.oracle.com/pcbpel/adapter/db/KPMGBIMApplication/MyProject_Export/MyProjectBatchPooler</con:namespace>
+            </con:binding>
+            <con:selector type="SOAP body"/>
+        </ser:binding>
+        <oper:operations enabled="true"/>
+        <ser:ws-policy>
+            <ser:binding-mode>no-policies</ser:binding-mode>
+        </ser:ws-policy>
+        <ser:invoke ref="MyProject_Export/Pipelines/MyProjectProcessPipeline" xsi:type="con:PipelineRef" xmlns:con="http://www.bea.com/wli/sb/pipeline/config"/>
+        <ser:xqConfiguration>
+            <ser:snippetVersion>1.0</ser:snippetVersion>
+        </ser:xqConfiguration>
+    </ser:coreEntry>
+    <ser:endpointConfig>
+        <tran:provider-id>jms</tran:provider-id>
+        <tran:inbound>true</tran:inbound>
+        <tran:URI>
+            <env:value>jms:///jms.bim.ConnectionFactory/jms.bim.TopicBIM</env:value>
+        </tran:URI>
+        <tran:inbound-properties/>
+        <tran:provider-specific xsi:type="jms:JmsEndPointConfiguration" xmlns:jms="http://www.bea.com/wli/sb/transports/jms">
+            <jms:is-queue>false</jms:is-queue>
+            <jms:is-secure>false</jms:is-secure>
+            <jms:inbound-properties>
+                <jms:message-selector>JMSType='MyProjectProcessStart'</jms:message-selector>
+                <jms:response-required>false</jms:response-required>
+                <jms:durable-subscription>true</jms:durable-subscription>
+                <jms:jms-client-id>MyProjectProcess</jms:jms-client-id>
+                <jms:topic-messages-distribution>OneCopyPerApplication</jms:topic-messages-distribution>
+                <jms:retry-count>1</jms:retry-count>
+                <jms:retry-interval>10</jms:retry-interval>
+                <jms:expiration-policy>Discard</jms:expiration-policy>
+                <jms:XA-required>false</jms:XA-required>
+                <jms:transaction-timeout>600</jms:transaction-timeout>
+            </jms:inbound-properties>
+            <jms:request-encoding>UTF-8</jms:request-encoding>
+            <jms:jndi-timeout>0</jms:jndi-timeout>
+        </tran:provider-specific>
+    </ser:endpointConfig>
+</ser:proxyServiceEntry>

@@ -1,0 +1,31 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+   <entry key="MYPROJECT_BOOKS:db_table_type">TABLE</entry>
+   <entry key="MYPROJECT_BOOKS.TITLE:db_column_size">50</entry>
+   <entry key="MYPROJECT_BOOKS.GENERE:db_column_type">VARCHAR2</entry>
+   <entry key="MYPROJECT_BOOKS.PUBLISHED:db_column_type">DATE</entry>
+   <entry key="MYPROJECT_BOOKS.ISBN:db_column_type">VARCHAR2</entry>
+   <entry key="return_single_result_set">false</entry>
+   <entry key="MYPROJECT_BOOKS.ISBN:db_column_not_null">true</entry>
+   <entry key="MYPROJECT_BOOKS.AUTHOR:db_column_type">VARCHAR2</entry>
+   <entry key="MYPROJECT_BOOKS.GENERE:db_column_not_null">false</entry>
+   <entry key="MYPROJECT_BOOKS.SEQNO:db_column_type">NUMBER</entry>
+   <entry key="MYPROJECT_BOOKS.SEQNO:db_column_precision">38</entry>
+   <entry key="MYPROJECT_BOOKS.TITLE:db_column_not_null">true</entry>
+   <entry key="MYPROJECT_BOOKS.GENERE:db_column_size">50</entry>
+   <entry key="root_descriptor_alias">MYPROJECT_BOOKS</entry>
+   <entry key="MYPROJECT_BOOKS.AUTHOR:db_column_not_null">false</entry>
+   <entry key="MYPROJECT_BOOKS.SEQNO:db_column_not_null">true</entry>
+   <entry key="MYPROJECT_BOOKS.TITLE:db_column_type">VARCHAR2</entry>
+   <entry key="MYPROJECT_BOOKS.SEQNO:db_column_scale">0</entry>
+   <entry key="MYPROJECT_BOOKS:db_column_5">GENERE</entry>
+   <entry key="MYPROJECT_BOOKS.ISBN:db_column_size">50</entry>
+   <entry key="MYPROJECT_BOOKS:db_column_4">PUBLISHED</entry>
+   <entry key="MYPROJECT_BOOKS:db_column_3">ISBN</entry>
+   <entry key="MYPROJECT_BOOKS:db_column_2">AUTHOR</entry>
+   <entry key="MYPROJECT_BOOKS:db_column_1">TITLE</entry>
+   <entry key="MYPROJECT_BOOKS:db_column_0">SEQNO</entry>
+   <entry key="MYPROJECT_BOOKS.AUTHOR:db_column_size">50</entry>
+   <entry key="MYPROJECT_BOOKS.PUBLISHED:db_column_not_null">false</entry>
+</properties>

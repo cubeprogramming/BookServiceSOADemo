@@ -1,0 +1,17 @@
+<adapter-config name="UpdateMyProjectBatch" 
+                adapter="db" 
+                wsdlLocation="../wsdl/UpdateMyProjectBatch.wsdl"
+                xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+                
+  <connection-factory UIConnectionName="CubePollDatabase-POLLSERVICE" location="eis/DB/pollservice"/>
+  
+  <endpoint-interaction portType="UpdateMyProjectBatch_ptt" operation="update">
+    <interaction-spec className="oracle.tip.adapter.db.DBWriteInteractionSpec">
+      <property name="DescriptorName" value="UpdateMyProjectBatch.MyprojectBatch"/>
+      <property name="DmlType" value="update"/>
+      <property name="MappingsMetaDataURL" value="UpdateMyProjectBatch-or-mappings.xml"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+      <property name="DetectOmissions" value="true"/>
+    </interaction-spec>
+  </endpoint-interaction>
+</adapter-config>

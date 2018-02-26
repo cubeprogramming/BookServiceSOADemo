@@ -1,0 +1,17 @@
+<adapter-config name="Get_MyProject_BOOKS" 
+                adapter="db" 
+                wsdlLocation="../wsdl/Get_MyProject_BOOKS.wsdl"
+                xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+                
+  <connection-factory UIConnectionName="CubePollDatabase-POLLSERVICE" location="eis/DB/pollservice"/>
+  
+  <endpoint-interaction portType="Get_MyProject_BOOKS_ptt" operation="Get_MyProject_BOOKSSelect">
+    <interaction-spec className="oracle.tip.adapter.db.DBReadInteractionSpec">
+      <property name="DescriptorName" value="Get_MyProject_BOOKS.MyprojectBooks"/>
+      <property name="QueryName" value="Get_MyProject_BOOKSSelect"/>
+      <property name="MappingsMetaDataURL" value="Get_MyProject_BOOKS-or-mappings.xml"/>
+      <property name="ReturnSingleResultSet" value="false"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+</adapter-config>

@@ -1,0 +1,102 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/Merge_PROJECT"
+           xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/Merge_PROJECT" 
+           elementFormDefault="qualified"
+           attributeFormDefault="qualified" 
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+           
+  <xs:element name="ProjectCollection" type="ProjectCollection"/>
+  
+  <xs:complexType name="ProjectCollection">
+    <xs:sequence>
+      <xs:element name="Project" type="Project" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="Project">
+    <xs:sequence>
+      <xs:element name="ProjectId" type="xs:int" nillable="true"/>
+      <xs:element name="projectNumber" type="string25" minOccurs="0"/>
+      <xs:element name="projectName" type="string30" minOccurs="0"/>
+      <xs:element name="longName" type="string240" minOccurs="0" nillable="true"/>
+      <xs:element name="customerName" type="string4000" minOccurs="0" nillable="true"/>
+      <xs:element name="customerNumber" type="string30" minOccurs="0"/>
+      <xs:element name="hovedkunde" type="string4000" minOccurs="0" nillable="true"/>
+      <xs:element name="foretaksnummer" type="string50" minOccurs="0" nillable="true"/>
+      <xs:element name="likningstype" type="string30" minOccurs="0" nillable="true"/>
+      <xs:element name="klassifisering" type="string30" minOccurs="0" nillable="true"/>
+      <xs:element name="projectStatusCode" type="string30" minOccurs="0"/>
+      <xs:element name="closedDate" type="xs:string" minOccurs="0" nillable="true"/>
+      <xs:element name="inCharge" type="xs:string" minOccurs="0"/>
+      <xs:element name="engagementPartner" type="string4000" minOccurs="0" nillable="true"/>
+      <xs:element name="engagementManager" type="string4000" minOccurs="0" nillable="true"/>
+      <xs:element name="leadPartner" type="string4000" minOccurs="0" nillable="true"/>
+      <xs:element name="revkundeutgaar" type="xs:decimal" minOccurs="0" nillable="true"/>
+      <xs:element name="utloepengkontrakt" type="xs:string" minOccurs="0" nillable="true"/>
+      <xs:element name="regnskapsaar" type="xs:decimal" minOccurs="0" nillable="true"/>
+      <xs:element name="revisjonskunde" type="string1" minOccurs="0" nillable="true"/>
+      <xs:element name="risikovurdering" type="string50" minOccurs="0" nillable="true"/>
+      <xs:element name="innrefferertFra" type="string255" minOccurs="0" nillable="true"/>
+      <xs:element name="regnskapsspraak" type="string50" minOccurs="0" nillable="true"/>
+      <xs:element name="risikoProsjket" type="string50" minOccurs="0" nillable="true"/>
+      <xs:element name="eqcrPartner" type="string4000" minOccurs="0" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:element name="SelectInputParameters" type="Select"/>
+  
+  <xs:complexType name="Select">
+    <xs:sequence/>
+  </xs:complexType>
+  
+  <xs:element name="ProjectPrimaryKey" type="ProjectPrimaryKey"/>
+  
+  <xs:complexType name="ProjectPrimaryKey">
+    <xs:sequence>
+      <xs:element name="ProjectId" type="xs:int" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:simpleType name="string25">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="25"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="string30">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="30"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="string240">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="240"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="string4000">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="4000"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="string50">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="50"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="string1">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="string255">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="255"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+</xs:schema>

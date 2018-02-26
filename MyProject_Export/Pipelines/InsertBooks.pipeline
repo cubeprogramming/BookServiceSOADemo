@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:pipelineEntry xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:coreEntry>
+        <con:binding type="Any XML"/>
+        <con:xqConfiguration>
+            <con:snippetVersion>1.0</con:snippetVersion>
+        </con:xqConfiguration>
+    </con:coreEntry>
+    <con:router errorHandler="error-N53e04036.N5f07ecb7.0.15e2d40b459.N7bd2">
+        <con:pipeline type="request" name="request-N53e04036.N5f07ecb7.0.15e2d40b459.N7c07">
+            <con:stage id="_StageId-N53e04036.N5f07ecb7.0.15e2d40b459.N7c05" name="Get transport request headers">
+                <con:context>
+                    <con2:userNsDecl prefix="pc" namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/Merge_PROJECT"/>
+                </con:context>
+                <con:actions>
+                    <con1:assign varName="ID">
+                        <con2:id>_ActionId-N53e04036.6a333dd0.0.15e336e5604.N7d25</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText>if (exists($inbound/ctx:transport/ctx:request/tp:headers/tp:user-header[@name='ID'])) then
+  fn-bea:inlinedXML($inbound/ctx:transport/ctx:request/tp:headers/tp:user-header[@name='ID']/@value)
+else()</con2:xqueryText>
+                        </con1:expr>
+                    </con1:assign>
+                    <con1:assign varName="sbBatch">
+                        <con2:id>_ActionId-N53e04036.N5f07ecb7.0.15e2d40b459.N7b25</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText>$inbound/ctx:transport/ctx:request/tp:headers/tp:user-header[@name='sbBatch']/@value</con2:xqueryText>
+                        </con1:expr>
+                    </con1:assign>
+                    <con4:report xmlns:con1="http://www.bea.com/wli/sb/stages/routing/config" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id>_ActionId-N53e04036.N5f07ecb7.0.15e2d40b459.N78fd</con2:id>
+                        <con3:expr>
+                            <con2:xqueryText>$sbBatch</con2:xqueryText>
+                        </con3:expr>
+                        <con3:labels>
+                            <con3:key>MyProjectProcess->MergeProject-sbBatch</con3:key>
+                            <con3:varName>ID</con3:varName>
+                            <con3:value>
+                                <con2:xpathText>./text()</con2:xpathText>
+                            </con3:value>
+                        </con3:labels>
+                    </con4:report>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="response" name="response-N53e04036.N5f07ecb7.0.15e2d40b459.N7c06"/>
+        <con:pipeline type="error" name="error-N53e04036.N5f07ecb7.0.15e2d40b459.N7bd2">
+            <con:stage id="_StageId-N53e04036.N5f07ecb7.0.15e2d40b459.N7b60" name="Log failed PROJECT records" xmlns:con1="http://www.bea.com/wli/sb/stages/config">
+                <con:context>
+                    <con1:userNsDecl prefix="pc" namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/Merge_PROJECT"/>
+                    <con1:userNsDecl prefix="myp" namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/MyProjectBatchPooler"/>
+                    <con1:userNsDecl prefix="mer" namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/Merge_MYPROJECT_FAILED_PROJECTS"/>
+                    <con1:userNsDecl prefix="pn" namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/Select_PROJECT"/>
+                </con:context>
+                <con:actions>
+                    <con4:log xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con4="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id>_ActionId-N53e04036.N5f07ecb7.0.15e2d40b459.N7b5f</con2:id>
+                        <con1:logLevel>error</con1:logLevel>
+                        <con1:expr>
+                            <con2:xqueryText>$fault</con2:xqueryText>
+                        </con1:expr>
+                        <con1:message>******** MyProjectProcess->Error writing PROJECT *********</con1:message>
+                    </con4:log>
+                    <con4:log xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con4="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con3="http://www.bea.com/wli/sb/stages/publish/config">
+                        <con2:id>_ActionId-N53e04036.6a333dd0.0.15e336e5604.N7d17</con2:id>
+                        <con2:disabled>true</con2:disabled>
+                        <con4:logLevel>info</con4:logLevel>
+                        <con4:expr>
+                            <con2:xqueryText>$origBody</con2:xqueryText>
+                        </con4:expr>
+                        <con4:message>***** MyProjectProcess->Project content *****</con4:message>
+                    </con4:log>
+                    <con4:report xmlns:con1="http://www.bea.com/wli/sb/stages/routing/config" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id>_ActionId-N53e04036.6a333dd0.0.15e336e5604.N7d0e</con2:id>
+                        <con3:expr>
+                            <con2:xqueryText>$body</con2:xqueryText>
+                        </con3:expr>
+                        <con3:labels>
+                            <con3:key>MyProjectProcess->Error inserting book</con3:key>
+                            <con3:varName>ID</con3:varName>
+                            <con3:value>
+                                <con2:xpathText>./text()</con2:xpathText>
+                            </con3:value>
+                        </con3:labels>
+                    </con4:report>
+                    <con2:reply xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con3="http://www.bea.com/wli/sb/stages/publish/config">
+                        <con2:id>_ActionId-N53e04036.N5f07ecb7.0.15e2d40b459.N7af1</con2:id>
+                    </con2:reply>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:flow>
+            <con:pipeline-node name="PipelinePairNode1">
+                <con:request>request-N53e04036.N5f07ecb7.0.15e2d40b459.N7c07</con:request>
+                <con:response>response-N53e04036.N5f07ecb7.0.15e2d40b459.N7c06</con:response>
+            </con:pipeline-node>
+            <con:route-node name="Insert Books">
+                <con:context/>
+                <con:actions></con:actions>
+            </con:route-node>
+        </con:flow>
+    </con:router>
+</con:pipelineEntry>

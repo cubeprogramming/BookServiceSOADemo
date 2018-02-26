@@ -1,0 +1,39 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+   <entry key="MYPROJECT_BATCH.STATUS:db_column_size">50</entry>
+   <entry key="MYPROJECT_BATCH.ERROR_DETAIL:db_column_type">VARCHAR2</entry>
+   <entry key="MYPROJECT_BATCH.POLLER_READ:db_column_scale">0</entry>
+   <entry key="MYPROJECT_BATCH.ERROR_CODE:db_column_size">200</entry>
+   <entry key="MYPROJECT_BATCH.LAST_TIMESTAMP:db_column_type">DATE</entry>
+   <entry key="MYPROJECT_BATCH.SB_BATCH:db_column_size">50</entry>
+   <entry key="MYPROJECT_BATCH.LAST_TIMESTAMP:db_column_not_null">false</entry>
+   <entry key="MYPROJECT_BATCH.SEQNO:db_column_scale">0</entry>
+   <entry key="MYPROJECT_BATCH.SEQNO:db_column_not_null">true</entry>
+   <entry key="MYPROJECT_BATCH:db_column_7">ERROR_DETAIL</entry>
+   <entry key="MYPROJECT_BATCH:db_column_6">ERROR_CODE</entry>
+   <entry key="MYPROJECT_BATCH:db_column_5">LAST_TIMESTAMP</entry>
+   <entry key="MYPROJECT_BATCH:db_column_4">TIMESTAMP</entry>
+   <entry key="MYPROJECT_BATCH.SEQNO:db_column_type">NUMBER</entry>
+   <entry key="MYPROJECT_BATCH:db_table_type">TABLE</entry>
+   <entry key="MYPROJECT_BATCH:db_column_3">POLLER_READ</entry>
+   <entry key="MYPROJECT_BATCH:db_column_2">STATUS</entry>
+   <entry key="MYPROJECT_BATCH:db_column_1">SB_BATCH</entry>
+   <entry key="MYPROJECT_BATCH:db_column_0">SEQNO</entry>
+   <entry key="MYPROJECT_BATCH.ERROR_DETAIL:db_column_size">500</entry>
+   <entry key="return_single_result_set">false</entry>
+   <entry key="MYPROJECT_BATCH.SB_BATCH:db_column_not_null">false</entry>
+   <entry key="MYPROJECT_BATCH.TIMESTAMP:db_column_not_null">false</entry>
+   <entry key="MYPROJECT_BATCH.STATUS:db_column_type">VARCHAR2</entry>
+   <entry key="MYPROJECT_BATCH.STATUS:db_column_not_null">false</entry>
+   <entry key="MYPROJECT_BATCH.POLLER_READ:db_column_type">NUMBER</entry>
+   <entry key="MYPROJECT_BATCH.SEQNO:db_column_precision">38</entry>
+   <entry key="root_descriptor_alias">MYPROJECT_BATCH</entry>
+   <entry key="MYPROJECT_BATCH.ERROR_CODE:db_column_type">VARCHAR2</entry>
+   <entry key="MYPROJECT_BATCH.POLLER_READ:db_column_not_null">true</entry>
+   <entry key="MYPROJECT_BATCH.SB_BATCH:db_column_type">VARCHAR2</entry>
+   <entry key="MYPROJECT_BATCH.ERROR_DETAIL:db_column_not_null">false</entry>
+   <entry key="MYPROJECT_BATCH.TIMESTAMP:db_column_type">DATE</entry>
+   <entry key="MYPROJECT_BATCH.POLLER_READ:db_column_precision">38</entry>
+   <entry key="MYPROJECT_BATCH.ERROR_CODE:db_column_not_null">false</entry>
+</properties>

@@ -1,0 +1,36 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/Get_MyProject_BOOKS"
+           xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/Get_MyProject_BOOKS" 
+           elementFormDefault="qualified"
+           attributeFormDefault="qualified" 
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+           
+  <xs:element name="MyprojectBooksCollection" type="MyprojectBooksCollection"/>
+  <xs:complexType name="MyprojectBooksCollection">
+    <xs:sequence>
+      <xs:element name="MyprojectBooks" type="MyprojectBooks" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="MyprojectBooks">
+    <xs:sequence>
+      <xs:element name="seqno" type="xs:decimal"/>
+      <xs:element name="title" type="string50" minOccurs="0"/>
+      <xs:element name="author" type="string50" minOccurs="0" nillable="true"/>
+      <xs:element name="isbn" type="string50" minOccurs="0"/>
+      <xs:element name="published" type="xs:dateTime" minOccurs="0" nillable="true"/>
+      <xs:element name="genere" type="string50" minOccurs="0" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:element name="Get_MyProject_BOOKSSelectInputParameters" type="Get_MyProject_BOOKSSelect"/>
+  <xs:complexType name="Get_MyProject_BOOKSSelect">
+    <xs:sequence/>
+  </xs:complexType>
+  
+  <xs:simpleType name="string50">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="50"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,24 @@
+<adapter-config name="MyProjectBatchPooler" 
+                adapter="db" 
+                wsdlLocation="../wsdl/MyProjectBatchPooler.wsdl"
+                xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+                
+  <connection-factory UIConnectionName="CubePollDatabase-POLLSERVICE" location="eis/DB/pollservice"/>
+  
+  <endpoint-activation portType="MyProjectBatchPooler_ptt" operation="receive">
+    <activation-spec className="oracle.tip.adapter.db.DBActivationSpec">
+      <property name="DescriptorName" value="MyProjectBatchPooler.MyprojectBatch"/>
+      <property name="QueryName" value="MyProjectBatchPoolerSelect"/>
+      <property name="MappingsMetaDataURL" value="MyProjectBatchPooler-or-mappings.xml"/>
+      <property name="PollingStrategy" value="LogicalDeletePollingStrategy"/>
+      <property name="MarkReadColumn" value="POLLER_READ"/>
+      <property name="MarkReadValue" value="1"/>
+      <property name="MarkUnreadValue" value="0"/>
+      <property name="PollingInterval" value="60"/>
+      <property name="MaxRaiseSize" value="1"/>
+      <property name="MaxTransactionSize" value="10"/>
+      <property name="NumberOfThreads" value="1"/>
+      <property name="ReturnSingleResultSet" value="false"/>
+    </activation-spec>
+  </endpoint-activation>
+</adapter-config>

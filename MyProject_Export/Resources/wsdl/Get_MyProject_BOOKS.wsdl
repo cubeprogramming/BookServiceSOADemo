@@ -1,0 +1,36 @@
+<wsdl:definitions name="Get_MyProject_BOOKS"
+                  targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/Get_MyProject_BOOKS"
+                  xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/top/Get_MyProject_BOOKS"
+                  xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+                  xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+                  xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/Get_MyProject_BOOKS"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+                  
+  <plt:partnerLinkType name="Get_MyProject_BOOKS_plt">
+    <plt:role name="Get_MyProject_BOOKS_role">
+      <plt:portType name="tns:Get_MyProject_BOOKS_ptt"/>
+    </plt:role>
+  </plt:partnerLinkType>
+  
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/Get_MyProject_BOOKS"
+              schemaLocation="../xsd/Get_MyProject_BOOKS_table.xsd"/>
+    </schema>
+  </wsdl:types>
+  
+  <wsdl:message name="Get_MyProject_BOOKSSelect_inputParameters">
+    <wsdl:part name="Get_MyProject_BOOKSSelect_inputParameters" element="tns:Get_MyProject_BOOKSSelectInputParameters"/>
+  </wsdl:message>
+  
+  <wsdl:message name="MyprojectBooksCollection_msg">
+    <wsdl:part name="MyprojectBooksCollection" element="tns:MyprojectBooksCollection"/>
+  </wsdl:message>
+  
+  <wsdl:portType name="Get_MyProject_BOOKS_ptt">
+    <wsdl:operation name="Get_MyProject_BOOKSSelect">
+      <wsdl:input message="tns:Get_MyProject_BOOKSSelect_inputParameters"/>
+      <wsdl:output message="tns:MyprojectBooksCollection_msg"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>
