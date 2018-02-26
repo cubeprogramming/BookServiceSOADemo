@@ -1,0 +1,43 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://TargetNamespace.com/BookService_InsertBooks_response"
+            targetNamespace="http://TargetNamespace.com/BookService_InsertBooks_response" elementFormDefault="qualified"
+            xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd" nxsd:version="JSON" nxsd:encoding="UTF-8">
+            
+  <xsd:element name="BookResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="title" type="xsd:string"/>
+        <xsd:element name="author" type="xsd:string"/>
+        <xsd:element name="isbn" type="xsd:string"/>
+        <xsd:element name="published" type="xsd:integer"/>
+        <xsd:element name="genre" type="xsd:string"/>
+        <xsd:element name="_links">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="self">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="href" type="xsd:string"/>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="book">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="href" type="xsd:string"/>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  
+  <xsd:annotation xmlns="">
+    <xsd:appinfo>NXSDSAMPLE=/Users/cube/jdeveloper/mywork/SOACloudOSBapp/MyProject_Export/Resources/json/insertBookResponse.json</xsd:appinfo>
+    <xsd:appinfo>USEHEADER=false</xsd:appinfo>
+  </xsd:annotation>
+</xsd:schema>

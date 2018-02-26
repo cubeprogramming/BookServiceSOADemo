@@ -33,7 +33,7 @@ else()</con2:xqueryText>
                             <con2:xqueryText>$sbBatch</con2:xqueryText>
                         </con3:expr>
                         <con3:labels>
-                            <con3:key>MyProjectProcess->MergeProject-sbBatch</con3:key>
+                            <con3:key>InsertBooks->MergeProject-sbBatch</con3:key>
                             <con3:varName>ID</con3:varName>
                             <con3:value>
                                 <con2:xpathText>./text()</con2:xpathText>
@@ -76,7 +76,7 @@ else()</con2:xqueryText>
                             <con2:xqueryText>$body</con2:xqueryText>
                         </con3:expr>
                         <con3:labels>
-                            <con3:key>MyProjectProcess->Error inserting book</con3:key>
+                            <con3:key>InsertBooks->Error inserting book</con3:key>
                             <con3:varName>ID</con3:varName>
                             <con3:value>
                                 <con2:xpathText>./text()</con2:xpathText>
@@ -96,8 +96,45 @@ else()</con2:xqueryText>
             </con:pipeline-node>
             <con:route-node name="Insert Books">
                 <con:context/>
-                <con:actions></con:actions>
+                <con:actions>
+                    <con3:route>
+                        <con2:id>_ActionId-N539bff9d.353ee50.0.161d305bf84.N7f6a</con2:id>
+                        <con3:service ref="MyProject_Export/Business_Services/BookService" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con3:operation>InsertBooks</con3:operation>
+                        <con3:outboundTransform>
+                            <con1:replace varName="body" contents-only="true">
+                                <con2:id>_ActionId-N539bff9d.353ee50.0.161d305bf84.N7f67</con2:id>
+                                <con1:location>
+                                    <con2:xpathText>.</con2:xpathText>
+                                </con1:location>
+                                <con1:expr>
+                                    <con2:xqueryTransform>
+                                        <con2:resource ref="MyProject_Export/Transformations/InsertBooks"/>
+                                        <con2:param name="bookRecord">
+                                            <con2:path>$body</con2:path>
+                                        </con2:param>
+                                    </con2:xqueryTransform>
+                                </con1:expr>
+                            </con1:replace>
+                            <con4:report xmlns:con1="http://www.bea.com/wli/sb/stages/routing/config" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/logging/config">
+                                <con2:id>_ActionId-N539bff9d.353ee50.0.161d305bf84.N7f33</con2:id>
+                                <con3:expr>
+                                    <con2:xqueryText>$body</con2:xqueryText>
+                                </con3:expr>
+                                <con3:labels>
+                                    <con3:key>InsertBooks->Preparing insert record</con3:key>
+                                    <con3:varName>ID</con3:varName>
+                                    <con3:value>
+                                        <con2:xpathText>./text()</con2:xpathText>
+                                    </con3:value>
+                                </con3:labels>
+                            </con4:report>
+                        </con3:outboundTransform>
+                        <con3:responseTransform/>
+                    </con3:route>
+                </con:actions>
             </con:route-node>
         </con:flow>
+        <con:partner-links/>
     </con:router>
 </con:pipelineEntry>

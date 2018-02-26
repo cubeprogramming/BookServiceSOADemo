@@ -1,0 +1,15 @@
+{
+  "title" : "Hamlet",
+  "author" : "William Shakespeare",
+  "isbn" : "978-0486272788",
+  "published" : 1937,
+  "genre" : "Novel",
+  "_links" : {
+    "self" : {
+      "href" : "https://bookservice-cube.eucom-north-1.oraclecloud.com:2229/books/1"
+    },
+    "book" : {
+      "href" : "https://bookservice-cube.eucom-north-1.oraclecloud.com:2229/books/1"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+<application xmlns:soa="http://www.oracle.com/soa/rest" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:ns0="http://TargetNamespace.com/BookService_InsertBooks_request"
+             xmlns="http://wadl.dev.java.net/2009/02">
+             
+  <doc title="BookService">RestReference</doc>
+  
+  <grammars>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/BookService_InsertBooks_request"
+                  schemaLocation="../xsd/insertBooks.xsd"/>
+    </xsd:schema>
+    
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/BookService_InsertBooks_response"
+                  schemaLocation="../xsd/insertBooksResponse.xsd"/>
+    </xsd:schema>
+  </grammars>
+  
+  <resources>
+    <resource path="/books">
+      <method name="POST" soa:wsdlOperation="InsertBooks">
+      
+        <doc title="POST InsertBooks">Inserting books into database</doc>
+        
+        <request>
+          <representation mediaType="application/json" element="cns:Book"
+                          xmlns:cns="http://TargetNamespace.com/BookService_InsertBooks_request"/>
+        </request>
+        
+        <response status="200">
+          <representation mediaType="application/json" element="cns:BookResponse"
+                          xmlns:cns="http://TargetNamespace.com/BookService_InsertBooks_response"/>
+        </response>
+        
+        <response status="400" soa:wsdlFaultName="NotFound"/>        
+        <response status="501" soa:wsdlFaultName="InternalServerError"/>
+        
+      </method>
+    </resource>
+  </resources>
+</application>
