@@ -3,15 +3,18 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>com.oracle.servicebus</groupId>
+        <artifactId>sbar-project-common</artifactId>
+        <version>12.2.1-3-0</version>
+    </parent>
+
     <groupId>SOACloudOSBapp</groupId>
-    <artifactId>SOACloudOSBapp</artifactId>
+    <artifactId>MyProject_Export</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <packaging>pom</packaging>
+    <packaging>sbar</packaging>
 
-    <modules>
-        <module>System</module>
-        <module>MyProject_Export</module>
-    </modules>
+    <description/>
 
 </project>
