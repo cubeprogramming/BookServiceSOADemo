@@ -28,9 +28,11 @@
   </wsdl:message>
   
   <wsdl:portType name="Get_MyProject_BOOKS_ptt">
+  
     <wsdl:operation name="Get_MyProject_BOOKSSelect">
       <wsdl:input message="tns:Get_MyProject_BOOKSSelect_inputParameters"/>
       <wsdl:output message="tns:MyprojectBooksCollection_msg"/>
     </wsdl:operation>
+    
   </wsdl:portType>
 </wsdl:definitions>
